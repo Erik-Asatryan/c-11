@@ -17,7 +17,7 @@ int arr2[N];
 for (int i =0 ; i < N; i++){
      arr2[i]= i+1;
 }
-for (int i =0; i <((B - A +1)/2);i++){ //1 2 6 5 8 7 3 4 9
+for (int i =0; i <((B - A +1)/2);i++){ //1 2 6 5 8 7 3 4 9 c
       swap(arr2[A+i],arr2[B-i]);
 }
 for (int i =0; i <((D - C +1)/2);i++){
