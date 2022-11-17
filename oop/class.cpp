@@ -3,7 +3,7 @@
 using namespace std;
 struct myNevType{
    string coffe1;
-   int gin ; 
+   int money ; 
 } ;
 class  CoffeeMachine{
     public:
@@ -26,13 +26,13 @@ class  CoffeeMachine{
                     cout<< "we don't have such a coffee\n";
                                     break;
                 }
-	                else if (input.coffe1 == m_sCoffee[i]&&input.gin >=m_nMoney[i])
+	                else if (input.coffe1 == m_sCoffee[i]&&input.money >=m_nMoney[i])
 	                {
-                        input.gin -= m_nMoney[i];
+                        input.money -= m_nMoney[i];
                         cout << input.coffe1 <<"  was sold  "<< m_nMoney[i]<<"  drams\n"\
-                                <<"your dime "<<input.gin<<" dram\n";
+                                <<"your dime "<<input.money<<" dram\n";
                     }
-	                else if (input.coffe1 == m_sCoffee[i]&&input.gin < m_nMoney[i])
+	                else if (input.coffe1 == m_sCoffee[i]&&input.money < m_nMoney[i])
 	                {
                         cout <<"you don't have enough money to buy  "<< m_sCoffee[i] <<"  coffee\n";
                     }
@@ -42,9 +42,9 @@ class  CoffeeMachine{
 };
    
 int main (){
- myNevType kofe{"moka" ,1800};
-    //kofe.gin = 39;
+ myNevType order{"moka" ,1800};
+    //kofe.money = 39;
     CoffeeMachine print;
    print.printPriceList();
-   print.sale(kofe);
+   print.sale(order);
 }
