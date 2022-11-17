@@ -1,16 +1,16 @@
 #include<iostream>
 #include<string>
 using namespace std;
-
-class  CoffeeMachine //Նկարագրել CoffeeMachine դաս, որը ստեղծման պահին կընդունի երկու նույնաչափ զանգված,
-{
+struct myNevType{
+   string coffe1;
+   int gin ; 
+} ;
+class  CoffeeMachine{
     public:
         string m_sCoffee[9]={"espresso","lungo","rissreto","amerikano","capuchino","latte","moka","glasse","frapuchino",};
-        int i=0,m_nMoney[9]={  1000,     1100,     900,     1100,         1400,      1600, 1800,   1500,      1200      };
-/////////////////////////////////////////////////////////////////////////////////////////////////
+        int i=0,m_nMoney[9]={  1000,     1100,     900,     1100,         1400,      1600,  1800,   1500,      1200      };
 
-
-    void printPriceList()//։ Դասը պետք է ունենա գնացուցակը տպելու "printPriceList" անդամ ֆունկցիա (member function):
+    void printPriceList()
         {              
          for (int j = 0;j<9;)
            {
@@ -18,44 +18,33 @@ class  CoffeeMachine //Նկարագրել CoffeeMachine դաս, որը ստեղ�
                 j++;
            }
         }
-    void sale(){
-        cout << "entor name Coffee:  ";
-/*Դասի հիմնական գործունեությունը լինելու է ընդունել 
-պատվեր, ստուգել պատվերի համապատասխանությունը 
-(ապրանքը գոյություն ունի, գումարը բավարարում է թե ոչ)
-և վերադարձնել ապրանքն ու մանրը*/
-        string m_sInputDrink;
-        int m_nInputMoney;
-        cin >> m_sInputDrink;
-        cout << "entr Money:";
-        cin >>m_nInputMoney;
-        for (;i<= 9 ;i++){
-            if (m_sInputDrink != m_sCoffee[i]&& i == 9){//&&m_nInputMoney==m_nMoney[i]){
-                   // cout<< "we don't have such a coffee";
-                    break;
-                    cout<< "we don't have such a coffee";
-            }
-            if (m_sInputDrink == m_sCoffee[i]&&m_nInputMoney==m_nMoney[i]){
-                cout << m_sInputDrink <<"  was sold  "<< m_nMoney[i]<<"  dram\n";
-                
-            }else if (m_sInputDrink == m_sCoffee[i]&&m_nInputMoney >m_nMoney[i]){
-                m_nInputMoney = m_nInputMoney - m_nMoney[i];
-                 cout << m_sInputDrink <<"  was sold  "<< m_nMoney[i]<<"  drams\n"\
-                 <<"your dime "<<m_nInputMoney<<" dram\n";
-            }else if (m_sInputDrink == m_sCoffee[i]&&m_nInputMoney < m_nMoney[i]){
+    void sale (myNevType input ){
+
+       	    for (;i<= 9 ;i++){
+                if (input.coffe1 != m_sCoffee[i] && i == 9)
+	            {                   // break;
+                    cout<< "we don't have such a coffee\n";
+                                    break;
+                }
+	                else if (input.coffe1 == m_sCoffee[i]&&input.gin >=m_nMoney[i])
+	                {
+                        input.gin -= m_nMoney[i];
+                        cout << input.coffe1 <<"  was sold  "<< m_nMoney[i]<<"  drams\n"\
+                                <<"your dime "<<input.gin<<" dram\n";
+                    }
+	                else if (input.coffe1 == m_sCoffee[i]&&input.gin < m_nMoney[i])
+	                {
                         cout <<"you don't have enough money to buy  "<< m_sCoffee[i] <<"  coffee\n";
+                    }
             }
-        }
-        }
+    }
 
-    };
+};
    
-
-
 int main (){
+ myNevType kofe{"moka" ,1800};
+    //kofe.gin = 39;
     CoffeeMachine print;
-    print.printPriceList();
-    print.sale();
-   // CoffeeMachine vacharq;
-   // vacharq.vacharq();
+   print.printPriceList();
+   print.sale(kofe);
 }
