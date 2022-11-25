@@ -8,12 +8,19 @@ class Animals
     virtual void Disply(){}
     virtual void toFeed(){}
     virtual void makeSound(){}
+    
+    // Ֆունկցիամների անունները հիմնականում պետք է նկարագրեն գործողություններ
+    // getID(), setId(), ոչ թե getterID և այլն
     virtual int GeterId (){ return id;}
     virtual std::string GeterName (){ return this->name;}
     virtual void SeterId (int id){ this->id = id; }
+    
+    // Երբ որ parameter֊ը պարզ տիպի չէ (bool,char, int)
+    // parameter֊ի պատճենումից պետք է խուսափել
     virtual void SeterName (std::string name ){ this->name = name; }
 
 private:
+    // Փոփոխականների անունը սկսել m_ ով 
        std::string name;
        int id;
 };
@@ -25,7 +32,8 @@ public:
     ~Dog(){std::cout << "coll ~Dat\t"<<this<<std::endl;}  // կարամ կանստրուկտոր և դեստրեւքտոր չկանչեմ ;
     void Disply()
     {
-       
+       // ՆԵՐՔ֏ՈՒՄ ԳՐԱԾԸ ԿԱՐԴԱԼ ՊԱՐՏԱԴԻՐ
+       // Խնդրումեմօպերատորներիցևգործողություններիցհետոդնելբացատներայլապեսինչպեստեսնումեսկարդալըշատդժվարէ !!!
         std::cout << "id is Dog-->\t"
         <<this->GeterId()<<"\nname is -->\t"
         <<this->GeterName()
@@ -44,6 +52,9 @@ public:
         std::cout << "the dog barks"<<std::endl;
     }
 public:
+    // Եթե Animal դասի բոլոր ժառանգները ունեն որևէ գործողություն, ապա այդ գործողությունը պետք է հայտարարված լինի
+    // ծնողում (Animal), որպեսզի հնարավոր լինի կանչել նաև ներքնշյալ obj֊ի վրա
+    // Animal* obj = new Cat(); 
     std::string GeterColor (){ return color;}
     std::string GeterBreed (){ return breed;}
     void SeterColor (std::string color){ this->color = color; }
@@ -56,6 +67,9 @@ private:
 class Cat : public Animals
 {
 public:
+    // Այսպիսի բարդ օբյեկտենրը նկարագրելիս ցանկալի է գրել պարամետրավորված կառուցիչ,
+    // Որպեսզի օգտագործողը main֊ից կամ ուրիշ տեղից կանչելիս, մի տողով ամբողջական օբյեկտը ստեղծի և սկզբնարժեքավորի
+    // Ոչ թե օբյեկտը ստեղծելուց հետո էլ մի քանի տող արժեքները տա
      Cat(){}// կարամ կանստրուկտոր և դեստրեւքտոր չկանչեմ ;
     ~Cat(){std::cout << "coll ~cat\t"<<this<<std::endl;}
     void Disply()
